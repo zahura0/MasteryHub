@@ -14,8 +14,7 @@ const Sidebar = () => {
 
   return (
     <div>
-      {/* Mobile Toggle Button */}
-      <div className="md:hidden fixed top-39 right-5 z-50">
+      <div className="md:hidden fixed top-20 right-6 z-50">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 text-black rounded-md hover:bg-gray-200 transition"
@@ -30,9 +29,10 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed md:relative top-50 right-4 md:top-0 md:right-0 w-64 md:w-auto p-4 md:p-6  rounded md:rounded-none shadow md:shadow-none z-40 transform transition-transform duration-300 origin-top ${
-          isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"
-        } md:scale-y-100 md:opacity-100`}
+        className={`fixed md:relative top-30 right-4 md:top-0 md:right-0 w-64 md:w-auto p-4 md:p-6 rounded md:rounded-none shadow md:shadow-none z-40 transform transition-transform duration-300 origin-top 
+        ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"} 
+        md:scale-y-100 md:opacity-100 
+        bg-gray-100 md:bg-transparent`}
       >
         <h2 className="font-bold text-lg mb-2">Terms of Service</h2>
         <ul className="space-y-1 text-sm">
