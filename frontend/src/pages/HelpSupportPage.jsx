@@ -79,35 +79,48 @@ const HelpSupportPage = () => {
         </div>
       </section>
 
-     {/* Content Section with Cards */}
-<section className="py-20 px-6 md:px-16 bg-white">
-  <div className="container mx-auto">
-    <h2 className="text-3xl md:text-4xl font-bold text-center text-[#331DA8]">
-      Need help? <br /> We've got your back
-    </h2>
+      {/* Content Section with Cards */}
+      <section className="py-20 px-6 md:px-16 bg-white">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#331DA8]">
+            Need help? <br /> We've got your back
+          </h2>
 
-    {/* Sub Section Text */}
-    <p className="mt-6 mb-12 text-center text-gray-600 max-w-3xl mx-auto text-lg">
-      From account settings to course access, find support for everything on <span className="font-semibold text-[#331DA8]">MasteryHub</span>.
-      If you’re new here and looking for tips, check out our <span className="font-semibold">Beginner’s Guide</span> to get started.
-    </p>
+          {/* Sub Section Text */}
+          <p className="mt-6 mb-12 text-center text-gray-600 max-w-3xl mx-auto text-lg">
+            From account settings to course access, find support for everything on <span className="font-semibold text-[#331DA8]">MasteryHub</span>.
+            If you’re new here and looking for tips, check out our <span className="font-semibold">Beginner’s Guide</span> to get started.
+          </p>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
-      {cards.map((card, index) => (
-        <div
-          key={index}
-          className="bg-[#865AEF] text-white p-8 rounded-2xl shadow-lg hover:scale-105 hover:shadow-2xl transform transition duration-300 flex flex-col items-center text-center h-full max-w-sm"
-        >
-          <img src={card.icon} alt={card.title} className="w-20 h-20 mb-6" />
-          <h3 className="text-2xl font-semibold mb-3">{card.title}</h3>
-          <p className="text-gray-100">{card.description}</p>
+          {/* First Row (3 cards) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center mb-8">
+            {cards.slice(0, 3).map((card, index) => (
+              <div
+                key={index}
+                className="bg-[#865AEF] text-white p-8 rounded-2xl shadow-lg hover:scale-105 hover:shadow-2xl transform transition duration-300 flex flex-col items-center text-center h-full max-w-sm"
+              >
+                <img src={card.icon} alt={card.title} className="w-20 h-20 mb-6" />
+                <h3 className="text-2xl font-semibold mb-3">{card.title}</h3>
+                <p className="text-gray-100">{card.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Second Row (last 2 cards centered) */}
+          <div className="flex justify-center gap-8 flex-wrap">
+            {cards.slice(3).map((card, index) => (
+              <div
+                key={index}
+                className="bg-[#865AEF] text-white p-8 rounded-2xl shadow-lg hover:scale-105 hover:shadow-2xl transform transition duration-300 flex flex-col items-center text-center h-full max-w-sm"
+              >
+                <img src={card.icon} alt={card.title} className="w-20 h-20 mb-6" />
+                <h3 className="text-2xl font-semibold mb-3">{card.title}</h3>
+                <p className="text-gray-100">{card.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-
+      </section>
     </div>
   );
 };
