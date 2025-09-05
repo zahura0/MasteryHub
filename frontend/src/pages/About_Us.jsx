@@ -40,7 +40,7 @@ export default function About_Us() {
           <img src={FounderImg} alt="vision" className="" />
           <div>
             <h3 className="text-3xl font-bold" style={{ color: "#6F60D9" }}>
-              OUR VISSION767474
+              OUR VISSION
             </h3>
             <p className="mt-4 text-gray-700">
               To become a global learning hub that bridges the gap between
