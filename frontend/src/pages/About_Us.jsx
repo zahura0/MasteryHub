@@ -1,6 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import HeroBg from "../assets/images/Hero_Bg.png";
+import HeroBg from "../assets/images/Hero_Bg.png"; // keep your background
 import MissionImg from "../assets/images/About_Us (2).png";
 import VisionImg from "../assets/images/About_Us (1).png";
 import FounderImg from "../assets/images/About_Us (3).png";
@@ -12,9 +12,30 @@ export default function About_Us() {
     <main className="font-sans text-gray-900">
       {/* Hero Section */}
       <section
-        className="relative h-screen bg-cover bg-center"
-        style={{ backgroundImage: `url(${HeroBg})` }}
-      ></section>
+        className="relative text-white h-screen px-6 py-20 text-center bg-cover bg-center flex items-center"
+        style={{
+          backgroundImage: `linear-gradient(rgba(4,1,108,0.5), rgba(74,22,189,0.5)), url(${HeroBg})`,
+        }}
+      >
+        <div className="container mx-auto flex flex-col items-start px-6 md:px-0">
+          {/* Hero Text */}
+          <div className="ml-20">
+            <p className="text-[60px] md:text-[80px] max-w-full text-left leading-none font-bold">
+              Unlock Your
+              <br />
+              Protential With <br />
+              Mastery<span className="text-[#E87A00]">Hub</span>
+            </p>
+            <p className="text-[15px]  max-w-full text-left mt-6 leading-none font-bold">
+              Join MasteryHub today to access a wide range of courses designed
+              <br />
+              to enhance your skills. Experience interactive learning with
+              expert <br /> instructors and a supportive community.
+              <br />
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* About Us */}
       <section className="px-6 py-16 max-w-3xl mx-auto">
@@ -65,8 +86,10 @@ export default function About_Us() {
 
       {/* Testimonial */}
       <section
-        className="relative h-screen bg-cover bg-center px-6 py-35 text-center"
-        style={{ backgroundImage: `url(${InstructorBg})` }}
+        className="relative h-screen px-6 py-20 text-center bg-cover bg-center flex items-center"
+        style={{
+          backgroundImage: `linear-gradient(rgba(4,1,108,0.5), rgba(74,22,189,0.5)), url(${InstructorBg})`,
+        }}
       >
         <div className="max-w-3xl mx-auto bg-white rounded-xl p-8">
           <img
@@ -88,22 +111,24 @@ export default function About_Us() {
         <div className="max-w-2xl mx-auto flex flex-col md:flex-row items-start md:items-start md:gap-2">
           {/* Left side: Gradient text */}
           <div className="text-left mb-8 md:mb-0 md:flex-1">
-            
-              <h2 className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-purple-500">Trusted by</h2>{" "}
-              <h2 className=" text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-purple-500">
-                10,000+ 
-              </h2>
-              <h2 className=" text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-purple-500">
-                learners
-              </h2>
-            
-            
+            <h2 className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-purple-500">
+              Trusted by
+            </h2>{" "}
+            <h2 className=" text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-purple-500">
+              10,000+
+            </h2>
+            <h2 className=" text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-purple-500">
+              learners
+            </h2>
           </div>
 
           {/* Right side: Vertical list */}
           <div className="flex flex-col gap-10 md:flex-none">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 flex items-center justify-center  text-white rounded-full" style={{ background: "#3D24A3" }}>
+              <div
+                className="w-10 h-10 flex items-center justify-center  text-white rounded-full"
+                style={{ background: "#3D24A3" }}
+              >
                 <FaStar />
               </div>
               <span className="font-bold text-blue-600">
@@ -112,7 +137,10 @@ export default function About_Us() {
             </div>
 
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 flex items-center justify-center text-white rounded-full" style={{ background: "#3D24A3" }}>
+              <div
+                className="w-10 h-10 flex items-center justify-center text-white rounded-full"
+                style={{ background: "#3D24A3" }}
+              >
                 <FaStar />
               </div>
               <span className="font-bold text-blue-600">
@@ -121,7 +149,10 @@ export default function About_Us() {
             </div>
 
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 flex items-center justify-center text-white rounded-full" style={{ background: "#3D24A3" }}>
+              <div
+                className="w-10 h-10 flex items-center justify-center text-white rounded-full"
+                style={{ background: "#3D24A3" }}
+              >
                 <FaStar />
               </div>
               <span className="font-bold text-blue-600">
