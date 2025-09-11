@@ -14,12 +14,12 @@ const Chat_Widget = () => {
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50">
+    <div className="fixed top-10 right-4 z-50">
       {/* Chat Box */}
       {isOpen && (
         <div className="w-72 sm:w-80 h-96 bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#331DA8] to-[#865AEF] text-white p-3 flex justify-between items-center">
+          <div className="bg-gradient-to-r from-[#04016C] to-[#4A16BD] text-white p-3 flex justify-between items-center">
             <h2 className="font-semibold text-sm">Chat Support</h2>
             <button onClick={() => setIsOpen(false)}>
               <X size={20} />
@@ -59,7 +59,7 @@ const Chat_Widget = () => {
             />
             <button
               onClick={handleSend}
-              className="bg-gradient-to-r from-[#331DA8] to-[#865AEF] text-white font-bold px-3 py-1 rounded-lg text-sm hover:bg-blue-700"
+              className="bg-gradient-to-r from-[#04016C] to-[#4A16BD] text-white font-bold px-3 py-1 rounded-lg text-sm hover:bg-blue-700"
             >
               Send
             </button>
