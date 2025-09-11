@@ -4,6 +4,8 @@ import Header from "./Header";
 import UserDetails from "./UserDetails";
 import CertificateDetails from "./CertificateDetails";
 import PaymentDashboard from "./PaymentDashboard";
+import InstructorDetails from "./InstructorDetails";
+import PaymentDetails from "./PaymentDetails"; // ✅ Import PaymentDetails
 
 const Admin_Body = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +13,9 @@ const Admin_Body = () => {
   // Refs for scrolling
   const userDetailsRef = useRef(null);
   const certificateRef = useRef(null);
-  const paymentDashboardRef = useRef(null); 
+  const paymentDashboardRef = useRef(null);
+  const instructorDetailsRef = useRef(null);
+  const paymentDetailsRef = useRef(null); // ✅ New ref for PaymentDetails
 
   const scrollToSection = (section) => {
     if (section === "user") {
@@ -20,6 +24,10 @@ const Admin_Body = () => {
       certificateRef.current.scrollIntoView({ behavior: "smooth" });
     } else if (section === "paymentDashboard") {
       paymentDashboardRef.current.scrollIntoView({ behavior: "smooth" });
+    } else if (section === "instructor") {
+      instructorDetailsRef.current.scrollIntoView({ behavior: "smooth" });
+    } else if (section === "payment") {
+      paymentDetailsRef.current.scrollIntoView({ behavior: "smooth" }); // ✅ Scroll to PaymentDetails
     }
   };
 
@@ -34,9 +42,19 @@ const Admin_Body = () => {
             <UserDetails />
           </div>
 
+          {/* Instructor Details Section */}
+          <div ref={instructorDetailsRef} className="mt-10">
+            <InstructorDetails />
+          </div>
+
           {/* Certificate Details Section */}
           <div ref={certificateRef} className="mt-10">
             <CertificateDetails />
+          </div>
+
+           {/* Payment Details Section ✅ */}
+          <div ref={paymentDetailsRef} className="mt-10">
+            <PaymentDetails />
           </div>
 
           {/* Payment Dashboard Section */}
