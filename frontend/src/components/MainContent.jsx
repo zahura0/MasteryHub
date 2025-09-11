@@ -4,11 +4,16 @@ import ProgressTabs from './ProgressTabs';
 import CourseCard from './CourseCard';
 import Timeline from './Timeline';
 import Recommendations from './Recommendations';
+import CourseProgressModel from './CourseProgressModel';
 
 const MainContent = () => {
   const [activeTab, setActiveTab] = useState('Dashboard');
   const [activeFilter, setActiveFilter] = useState('In Progress');
   const [timelineFilter, setTimelineFilter] = useState('Today');
+  
+  // Model state
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [isModelOpen, setIsModelOpen] = useState(false);
 
   const courses = [
     {
@@ -29,7 +34,7 @@ const MainContent = () => {
       id: 3,
       title: 'UI Design Foundation',
       category: 'ONLINE COURSE',
-      progress: 90,
+      progress: 100, // Completed course
       color: 'bg-yellow-500'
     },
     {
@@ -47,8 +52,13 @@ const MainContent = () => {
   ];
 
   const handleCourseClick = (course) => {
-    console.log('Course clicked:', course.title);
-    // Add course click logic here
+    setSelectedCourse(course);
+    setIsModelOpen(true);
+  };
+
+  const handleCloseModel = () => {
+    setIsModelOpen(false);
+    setSelectedCourse(null);
   };
 
   const filteredCourses = courses.filter(course => {
@@ -107,6 +117,13 @@ const MainContent = () => {
           )}
         </div>
       </div>
+
+      {/* Course Progress Model */}
+      <CourseProgressModel 
+        course={selectedCourse}
+        isOpen={isModelOpen}
+        onClose={handleCloseModel}
+      />
     </div>
   );
 };
