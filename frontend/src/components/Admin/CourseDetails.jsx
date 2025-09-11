@@ -2,29 +2,29 @@ import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FiFilter, FiRefreshCw, FiDownload, FiEdit, FiTrash2 } from "react-icons/fi";
 
-const CertificateDetails = () => {
-  const certificates = [
-    { certificateId: "00001", studentName: "Christine Brooks", course: "089 Kutch Green Apt. 448", courseId: "C001", issuedDate: "14 Feb 2019" },
-    { certificateId: "00002", studentName: "John Doe", course: "123 Main Street", courseId: "C002", issuedDate: "15 Feb 2019" },
-    { certificateId: "00003", studentName: "Jane Smith", course: "456 Elm Road", courseId: "C003", issuedDate: "16 Feb 2019" },
-    { certificateId: "00004", studentName: "Michael Lee", course: "789 Pine Street", courseId: "C004", issuedDate: "17 Feb 2019" },
-    { certificateId: "00005", studentName: "Lucy Brown", course: "321 Pine Lane", courseId: "C005", issuedDate: "18 Feb 2019" },
-    { certificateId: "00006", studentName: "Tom Harris", course: "654 Cedar Blvd", courseId: "C006", issuedDate: "19 Feb 2019" },
+const CourseDetails = () => {
+  const allCourses = [
+    { id: "C001", name: "Introduction to Programming", department: "Computer Sci", instructor: "John Smith", duration: "12 Weeks" },
+    { id: "C002", name: "Web Development Basics", department: "IT Dept", instructor: "Sarah Johnson", duration: "10 Weeks" },
+    { id: "C003", name: "Database Systems", department: "Computer Sci", instructor: "Michael Brown", duration: "14 Weeks" },
+    { id: "C004", name: "Software Engineering Basics", department: "Computer Sci", instructor: "John Smith", duration: "16 Weeks" },
+    { id: "C005", name: "Networking Fundamentals", department: "IT Dept", instructor: "Sarah Johnson", duration: "12 Weeks" },
   ];
 
+  // pagination states
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
-  const totalPages = Math.ceil(certificates.length / itemsPerPage);
+  const coursesPerPage = 2; // number of rows per page
 
-  const indexOfLast = currentPage * itemsPerPage;
-  const indexOfFirst = indexOfLast - itemsPerPage;
-  const currentCerts = certificates.slice(indexOfFirst, indexOfLast);
+  const indexOfLast = currentPage * coursesPerPage;
+  const indexOfFirst = indexOfLast - coursesPerPage;
+  const currentCourses = allCourses.slice(indexOfFirst, indexOfLast);
+  const totalPages = Math.ceil(allCourses.length / coursesPerPage);
 
   return (
-    <div className="p-8 bg-white rounded-xl shadow-md" id="certificate-details">
+    <div className="p-8 bg-white rounded-xl shadow-md">
       {/* Header with Search */}
       <div className="flex items-center mb-6">
-        <h2 className="text-2xl font-bold">Certificate Details</h2>
+        <h2 className="text-2xl font-bold">Course Details</h2>
         <div className="relative w-96 ml-20">
           <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           <input
@@ -41,24 +41,26 @@ const CertificateDetails = () => {
           <div className="flex items-center px-5 py-2 text-gray-600 bg-white hover:bg-gray-50">
             <FiFilter className="h-5 w-5 mr-2" /> Filter By
           </div>
-
           <select className="px-5 py-2 bg-white text-gray-600 hover:bg-gray-50 focus:outline-none">
-            <option>14 Feb 2019</option>
-            <option>15 Feb 2019</option>
+            <option>Department</option>
+            <option>Computer Sci</option>
+            <option>IT Dept</option>
           </select>
-
           <select className="px-5 py-2 bg-white text-gray-600 hover:bg-gray-50 focus:outline-none">
-            <option>Course ID</option>
-            <option>C001</option>
-            <option>C002</option>
+            <option>Instructor</option>
+            <option>John Smith</option>
+            <option>Sarah Johnson</option>
+            <option>Michael Brown</option>
           </select>
-
           <button className="flex items-center px-5 py-2 text-red-500 font-medium hover:bg-gray-50">
             <FiRefreshCw className="h-5 w-5 mr-1" /> Reset Filter
           </button>
         </div>
 
-        <button className="flex items-center px-5 py-2 rounded-full text-white space-x-2 bg-gradient-to-r from-[#331DA8] to-[#0625CA] hover:opacity-90">
+        <button
+          className="flex items-center px-5 py-2 rounded-full text-white space-x-2 
+                     bg-gradient-to-r from-[#331DA8] to-[#0625CA] hover:opacity-90"
+        >
           <span>Download</span>
           <FiDownload className="h-5 w-5" />
         </button>
@@ -68,22 +70,22 @@ const CertificateDetails = () => {
       <table className="w-full border-collapse rounded-lg overflow-hidden shadow-sm">
         <thead>
           <tr className="bg-gray-100 text-left text-gray-700">
-            <th className="p-3">Certificate ID</th>
-            <th className="p-3">Student Name</th>
-            <th className="p-3">Course</th>
             <th className="p-3">Course ID</th>
-            <th className="p-3">Issued Date</th>
+            <th className="p-3">Course Name</th>
+            <th className="p-3">Department</th>
+            <th className="p-3">Instructor</th>
+            <th className="p-3">Duration</th>
             <th className="p-3">Actions</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {currentCerts.map((cert, idx) => (
+          {currentCourses.map((course, idx) => (
             <tr key={idx} className="hover:bg-gray-50">
-              <td className="p-3">{cert.certificateId}</td>
-              <td className="p-3">{cert.studentName}</td>
-              <td className="p-3">{cert.course}</td>
-              <td className="p-3">{cert.courseId}</td>
-              <td className="p-3">{cert.issuedDate}</td>
+              <td className="p-3">{course.id}</td>
+              <td className="p-3">{course.name}</td>
+              <td className="p-3">{course.department}</td>
+              <td className="p-3">{course.instructor}</td>
+              <td className="p-3">{course.duration}</td>
               <td className="p-3 flex space-x-2">
                 <button className="p-2 rounded-full bg-yellow-100 text-yellow-700 hover:bg-yellow-200">
                   <FiEdit />
@@ -98,31 +100,34 @@ const CertificateDetails = () => {
       </table>
 
       {/* Pagination */}
-      <div className="flex items-center justify-center mt-6 space-x-2">
+      <div className="flex justify-center items-center mt-6 space-x-2">
+        {/* Prev */}
         <button
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-          className="px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300"
+          className="px-4 py-2 rounded-full bg-transparent text-gray-700 hover:bg-gray-200"
         >
           Prev
         </button>
 
+        {/* Page Numbers */}
         {Array.from({ length: totalPages }, (_, i) => (
           <button
             key={i}
             onClick={() => setCurrentPage(i + 1)}
-            className={`px-4 py-2 rounded-full ${
+            className={`px-4 py-2 rounded-full transition-all duration-150 border border-gray-300 ${
               currentPage === i + 1
-                ? "bg-gradient-to-r from-[#331DA8] to-[#0625CA] text-white"
-                : "bg-gray-200 hover:bg-gray-300"
+                ? "bg-gradient-to-r from-[#8E65EF] to-[#331DA8] text-white"
+                : "bg-transparent text-gray-700 hover:bg-gradient-to-r hover:from-[#8E65EF] hover:to-[#331DA8] hover:text-white"
             }`}
           >
             {i + 1}
           </button>
         ))}
 
+        {/* Next */}
         <button
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-          className="px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300"
+          className="px-4 py-2 rounded-full bg-transparent text-gray-700 hover:bg-gray-200"
         >
           Next
         </button>
@@ -131,4 +136,4 @@ const CertificateDetails = () => {
   );
 };
 
-export default CertificateDetails;
+export default CourseDetails;
