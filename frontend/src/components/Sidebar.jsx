@@ -9,7 +9,7 @@ import {
 
 const Sidebar = ({ user = { name: 'Kennedy Grey', role: 'Pro User', avatar: '🐸' } }) => {
   return (
-    <div className="w-96 min-h-screen space-y-6">
+    <div className="w-55 min-h-screen space-y-6">
       {/* Profile Card */}
       <div className="bg-gradient-to-br from-purple-600 to-purple-800 rounded-2xl p-8 text-white">
         <div className="flex items-center justify-between mb-6">

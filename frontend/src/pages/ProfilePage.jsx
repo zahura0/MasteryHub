@@ -13,12 +13,12 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-1">
+    <div className="min-h-screen w-screen bg-white-500 flex overflow-x-hidden items-center justify-center p-1">
       <div className="w-full h-full flex gap-0">
         <Sidebar user={user} />
         <MainContent />
         <CharacterIllustration />
-      </div>
+       </div>
     </div>
   );
 };
