@@ -7,7 +7,7 @@ import PaymentDashboard from "./PaymentDashboard";
 import InstructorDetails from "./InstructorDetails"; 
 import CourseDetails from "./CourseDetails"; 
 import ContactFAQ from "./ContactFAQ";
-import AdminSettings from "./AdminSettings"; // <-- import AdminSettings
+import AdminSettings from "./AdminSettings";
 
 const Admin_Body = () => {
   const [isOpen, setIsOpen] = useState(true);
