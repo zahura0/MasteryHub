@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import courseImage from "../../assets/images/course_image.png"; // ✅ Import image
+import courseImage from "../../assets/images/course_image.png";
+import CheckoutModal from "./CheckoutModal";
 
 const CartBody = () => {
   const [items, setItems] = useState([
@@ -8,6 +9,8 @@ const CartBody = () => {
     { id: 3, title: "Motion Graphics: Create a Nice Typography Animation", price: 33.99, selected: true },
     { id: 4, title: "Motion Graphics: Create a Nice Typography Animation", price: 33.99, selected: false },
   ]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleSelect = (id) => {
     setItems(items.map(item => item.id === id ? { ...item, selected: !item.selected } : item));
@@ -33,18 +36,13 @@ const CartBody = () => {
     <div className="flex flex-col items-center px-6 py-10 bg-gradient-to-b from-white to-blue-50 min-h-screen mt-24">
       <div className="flex w-full max-w-6xl gap-10">
         
-        {/* Left Side Items */}
         <div className="flex-1">
           <div className="flex items-center justify-between mb-6 bg-white p-4 rounded-xl shadow-lg border border-gray-200">
             <p className="font-semibold text-gray-700">Select all Items</p>
-            
-            {/* ✅ Custom round button */}
             <button
               onClick={toggleSelectAll}
               className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
-                allSelected
-                  ? "bg-blue-600 border-blue-600 shadow-md"
-                  : "border-gray-400 hover:border-blue-400"
+                allSelected ? "bg-blue-600 border-blue-600 shadow-md" : "border-gray-400 hover:border-blue-400"
               }`}
             >
               {allSelected && <span className="w-3 h-3 bg-white rounded-full"></span>}
@@ -59,13 +57,10 @@ const CartBody = () => {
                 key={item.id}
                 className="relative bg-white rounded-2xl p-5 shadow-lg mb-6 hover:shadow-2xl hover:scale-[1.02] border border-gray-200 transition-all duration-300"
               >
-                {/* ✅ Custom round select button in top-right */}
                 <button
                   onClick={() => toggleSelect(item.id)}
                   className={`absolute top-3 right-3 w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
-                    item.selected
-                      ? "bg-blue-600 border-blue-600 shadow"
-                      : "border-gray-400 hover:border-blue-400"
+                    item.selected ? "bg-blue-600 border-blue-600 shadow" : "border-gray-400 hover:border-blue-400"
                   }`}
                 >
                   {item.selected && <span className="w-3 h-3 bg-white rounded-full"></span>}
@@ -78,9 +73,7 @@ const CartBody = () => {
                     className="w-32 h-24 rounded-xl object-cover shadow-sm"
                   />
                   <div>
-                    <h2 className="font-semibold text-gray-800 text-lg leading-snug">
-                      {item.title}
-                    </h2>
+                    <h2 className="font-semibold text-gray-800 text-lg leading-snug">{item.title}</h2>
                     <p className="text-gray-600 font-medium mt-1">${item.price.toFixed(2)}</p>
                   </div>
                 </div>
@@ -98,7 +91,6 @@ const CartBody = () => {
           )}
         </div>
 
-        {/* Right Side Cart Summary */}
         <div className="w-80">
           <div className="p-7 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl shadow-xl border border-blue-200">
             <h2 className="font-bold text-xl border-b border-gray-300 pb-4 mb-6 text-center text-gray-800">
@@ -138,21 +130,25 @@ const CartBody = () => {
               <button className="bg-[#050472] text-white px-4 py-2 rounded-lg shadow hover:bg-[#03035a] transition">
                 Add Courses +
               </button>
-              <button 
-                onClick={emptyCart} 
+              <button
+                onClick={emptyCart}
                 className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg shadow hover:bg-gray-300 transition"
               >
                 Empty Cart
               </button>
             </div>
 
-            <button className="w-full bg-white text-[#050472] border border-[#050472] font-semibold px-5 py-3 rounded-full shadow hover:bg-[#f0f0ff] transition">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="w-full bg-white text-[#050472] border border-[#050472] font-semibold px-5 py-3 rounded-full shadow hover:bg-[#f0f0ff] transition"
+            >
               Check Out
             </button>
           </div>
         </div>
-
       </div>
+
+      <CheckoutModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };

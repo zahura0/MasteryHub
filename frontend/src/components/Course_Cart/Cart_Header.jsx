@@ -6,7 +6,6 @@ import "@fontsource/rowdies/700.css";
 const CartHeader = () => {
   return (
     <div className="w-screen bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-between px-10 py-20 rounded-lg relative overflow-visible">
-      {/* Left text section */}
       <div className="ml-20 z-10 relative">
         <h1
           className="text-6xl font-bold text-white leading-tight"
@@ -22,10 +21,9 @@ const CartHeader = () => {
         </p>
       </div>
 
-      {/* Right image section - full banner with right margin */}
       <div
         className="absolute w-80"
-        style={{ top: "10px", right: "20px" }} // added right margin
+        style={{ top: "10px", right: "20px" }} 
       >
         <img
           src={CartImage}

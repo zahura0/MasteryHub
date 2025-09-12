@@ -1,6 +1,6 @@
 import React from "react";
 import CartHeader from "./Cart_Header";
-import CartBody from "./Cart_Body"; // ✅ Import the Cart_Body component
+import CartBody from "./Cart_Body"; 
 
 const CourseCart = () => {
   return (

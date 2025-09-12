@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Terms_And_Conditions from "./pages/Terms_And_Conditions";
 import Admin_Body from "./components/Admin/Admin_Body";
-import CourseCart from "./components/Course_Cart/Course_Cart"; // notice Capital name
+import CourseCart from "./components/Course_Cart/Course_Cart";
 
 const App = () => {
   return (
