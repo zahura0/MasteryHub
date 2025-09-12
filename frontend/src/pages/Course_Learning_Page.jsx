@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaDownload } from "react-icons/fa";
 import Chat_Widget from "../components/Course_Learning_Page/Chat_Widget";
+import AssignmentModal from "../components/Course_Learning_Page/Assignment_Modal";
+import Quiz_Modal from "../components/Course_Learning_Page/Quiz_Modal"; // import modal component
 
 const Course_Learning_Page = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
+
   return (
     <div className="w-full bg-gray-50 min-h-screen flex flex-col">
       {/* Page Container */}
@@ -11,7 +16,6 @@ const Course_Learning_Page = () => {
           How To Make GUI In Java With Example
         </h2>
 
-        {/* Main Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Content */}
           <div className="lg:col-span-2 space-y-6">
@@ -22,23 +26,6 @@ const Course_Learning_Page = () => {
                 title="Course Video"
                 allowFullScreen
               ></iframe>
-            </div>
-
-            {/* Introduction */}
-            <div>
-              <h3 className="text-lg font-bold mb-2">
-                Introduction 1 :{" "}
-                <span className="text-xl font-bold mb-2">
-                  What is JAVA GUI ?
-                </span>
-              </h3>
-              <p className="text-black-600 text-sm sm:text-base">
-                Quisque sagittis orci ut diam condimentum, vel euismod erat
-                placerat. In iaculis arcu eros, eget tempus orci facilisis id.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-                massa mi. Aliquam in hendrerit urna. Pellentesque sit amet
-                sapien fringilla, mattis ligula consectetur, ultrices mauris.
-              </p>
             </div>
 
             {/* Notes */}
@@ -63,7 +50,11 @@ const Course_Learning_Page = () => {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-3 p-3 border rounded-lg cursor-pointer"
+                  onClick={() => {
+                    if (item === "Assignment") setIsModalOpen(true);
+                    if (item === "Quiz") setIsQuizOpen(true);
+                  }}
+                  className="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-100"
                 >
                   <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-[#04016C] to-[#4A16BD] text-white text-sm">
                     {index + 1}
@@ -88,6 +79,13 @@ const Course_Learning_Page = () => {
 
       {/* Chat Widget */}
       <Chat_Widget />
+
+      {/* Assignment Modal */}
+      <AssignmentModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+      <Quiz_Modal isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
     </div>
   );
 };
