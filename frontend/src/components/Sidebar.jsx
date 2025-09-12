@@ -9,10 +9,10 @@ import {
 
 const Sidebar = ({ user = { name: 'Kennedy Grey', role: 'Pro User', avatar: '🐸' } }) => {
   return (
-    <div className="w-65 min-h-screen bg-gradient-to-br from-purple-600 to-purple-800 rounded-2xl p-8 text-white flex flex-col">
+    <div className="w-65 min-h-screen bg-gradient-to-br from-purple-600 to-purple-800  p-8 text-white flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <span className="text-sm opacity-90">ONLINE</span>
+        <span className="text-sm opacity-90"> 🟢 ONLINE</span>
         <Bell className="w-5 h-5" />
       </div>
       
