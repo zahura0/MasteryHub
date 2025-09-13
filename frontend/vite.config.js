@@ -9,4 +9,7 @@ export default defineConfig({
     tailwindcss(),
     react(),
   ],
+  // Base path for GitHub Pages deployment: https://<user>.github.io/<repo>/
+  // Adjust if your repo name changes
+  base: process.env.VITE_BASE ?? '/MasteryHub/',
 })
