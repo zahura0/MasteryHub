@@ -1,126 +1,205 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import heroGirl from '../assets/girl-stu-hero.png';
+import image01 from '../assets/image_01.png';
+import image02 from '../assets/image_02.png';
+import image03 from '../assets/image_03.png';
+import image04 from '../assets/image_04.png';
+import webinar from '../assets/webinar.png';
+import service from '../assets/service.png';
+import payment from '../assets/payment.png';
+import certificate from '../assets/certificate-of-origin.png';
 
-// Simple data arrays for mapped UI sections
-const features = [
-  { title: 'Expert-Led Paths', desc: 'Structured curricula by industry mentors with real project focus.' },
-  { title: 'Hands-On Projects', desc: 'Portfolio-ready builds and scenario-based challenges.' },
-  { title: 'Progress Tracking', desc: 'Milestones, streaks, and adaptive recommendations.' },
-  { title: 'Community Support', desc: 'Peer reviews, study groups, and mentor feedback loops.' },
+// Data (placeholder – replace with real API data later)
+const featuredCourses = [
+  { id: 1, title: 'Motion Graphics: Create a Nice Typography Animation', author: 'LÆTITIA HENRY', price: 33.99, image: image01, duration: '08h 30m', lessons: 42, tag: 'Digital Marketing' },
+  { id: 2, title: 'The Complete Financial Analyst Training & Investing', author: 'LÆTITIA HENRY', price: 46.99, image: image02, duration: '06h 10m', lessons: 30, tag: 'Design' },
+  { id: 3, title: 'Education Software and PHP and JS System Script', author: 'LÆTITIA HENRY', price: 33.99, image: image03, duration: '09h 12m', lessons: 54, tag: 'English Course' },
+  { id: 4, title: 'Marketing 2025: Complete Guide To Instagram Growth', author: 'LÆTITIA HENRY', price: 33.99, image: image04, duration: '04h 48m', lessons: 18, tag: 'Content Creation' },
+  { id: 5, title: 'Advance PHP knowledge with JS to make smart web', author: 'LÆTITIA HENRY', price: 23.99, image: image02, duration: '07h 05m', lessons: 36, tag: 'Fullstack' },
+  { id: 6, title: 'Learn 3D Modelling and Design for Beginners', author: 'LÆTITIA HENRY', price: 33.99, image: image01, duration: '05h 20m', lessons: 25, tag: '3D Design' },
+];
+
+const process = [
+  { icon: webinar, title: '01. Learn', desc: 'Access curated videos & interactive lessons delivered by expert instructors across domains.' },
+  { icon: service, title: '02. Graduate', desc: 'Complete checkpoints & earn shareable certificates to validate real progress publicly.' },
+  { icon: payment, title: '03. Work', desc: 'Apply skills on real-world briefs & portfolio challenges leading to tangible outcomes.' },
 ];
 
 const categories = [
-  'Web Development', 'Data Science', 'AI & ML', 'UI / UX', 'Cloud & DevOps', 'Cybersecurity'
+  { name: 'Digital Marketing', count: 25 },
+  { name: 'Web Development', count: 16 },
+  { name: 'Art & Humanities', count: 78 },
+  { name: 'Personal Development', count: 22 },
+  { name: 'IT and Software', count: 110 },
+  { name: 'Graphic Design', count: 85 },
 ];
 
 const testimonials = [
-  { name: 'Amara S.', role: 'Frontend Developer', quote: 'MasteryHub turned scattered tutorials into a focused path. I landed an internship in 8 weeks.' },
-  { name: 'Devon R.', role: 'Data Analyst', quote: 'The milestone system kept me consistent. The projects impressed recruiters instantly.' },
-  { name: 'Lina K.', role: 'Product Designer', quote: 'Loved the blend of theory and critique. Community feedback leveled up my portfolio.' },
+  { name: 'Ronald Richards', text: 'Excellent choice for logical skill practice. Learnt in-depth software concepts and secured a freelance project quickly.', rating: 5 },
+  { name: 'Wade Warren', text: 'Course structure was practical. I used lessons to build confidently. Layout is tidy & flows well.', rating: 4 },
+  { name: 'Jacob Jones', text: 'Clear structure and supportive mentors. Lessons are crisp & effective and explanations are thorough without fluff.', rating: 5 },
 ];
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-200 via-white to-white" />
-        <div className="mx-auto max-w-7xl px-4 pt-20 pb-24 sm:pt-28 sm:pb-32 text-center">
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight">
-            Learn. Build. <span className="bg-gradient-to-r from-purple-600 to-orange-500 bg-clip-text text-transparent">Master.</span>
-          </h1>
-          <p className="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 leading-relaxed">
-            MasteryHub accelerates your journey from beginner to job‑ready with curated paths, guided projects, and a supportive community.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact" className="rounded-full bg-gradient-to-r from-purple-600 to-orange-500 px-8 py-3 text-white font-semibold shadow hover:shadow-lg hover:brightness-105 transition">
-              Start Learning
-            </Link>
-            <Link to="/help-support" className="rounded-full border border-purple-300 px-8 py-3 font-medium text-purple-700 hover:bg-purple-50">
-              Need Help?
-            </Link>
-          </div>
-          <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 text-sm text-gray-600">
-            {[['50K+', 'Learners'], ['1K+', 'Projects'], ['120+', 'Mentors'], ['95%', 'Satisfaction']].map(([k, v]) => (
-              <div key={k} className="flex flex-col items-center">
-                <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-orange-500 bg-clip-text text-transparent">{k}</span>
-                <span>{v}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="py-20 bg-white">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">Why MasteryHub?</h2>
-            <p className="mt-4 text-gray-600">A platform built to keep you consistent, confident, and career-ready.</p>
-          </div>
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map(f => (
-              <div key={f.title} className="group relative rounded-2xl border border-purple-100 bg-white p-6 shadow-sm hover:shadow-lg transition overflow-hidden">
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-purple-50 to-orange-50 transition" />
-                <h3 className="relative font-semibold text-gray-900 mb-2">{f.title}</h3>
-                <p className="relative text-sm leading-relaxed text-gray-600">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Categories */}
-      <section className="py-20 bg-gradient-to-b from-purple-50 to-white">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">Top Categories</h2>
-              <p className="mt-2 text-gray-600 max-w-md">Pick a lane and follow a structured path packed with skill checkpoints.</p>
+    <main className="bg-white flex flex-col">
+      {/* HERO */}
+      <section className="relative w-full overflow-hidden bg-gradient-to-r from-indigo-900 to-purple-700">
+        <div className="absolute inset-0 opacity-20" style={{backgroundImage:'radial-gradient(circle at 30% 40%,rgba(255,255,255,0.3),transparent 60%)'}} />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10 pt-10 md:pt-14 pb-10">
+          <div className="flex-1 text-white max-w-xl">
+            <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">
+              Unlock Your <br /> Potential with <span className="text-orange-300">MasteryHub</span>
+            </h1>
+            <p className="mt-5 text-white/90 text-sm sm:text-base leading-relaxed max-w-md">
+              Learn in-demand skills, follow structured paths, and build real portfolio projects guided by experts.
+            </p>
+            <div className="mt-7 flex flex-col sm:flex-row gap-4">
+              <Link to="/courses" className="rounded-full bg-orange-400 hover:bg-orange-500 text-indigo-950 font-semibold px-8 py-3 text-sm shadow">
+                Browse Courses
+              </Link>
+              <Link to="/contact" className="rounded-full border border-white/40 hover:bg-white/10 text-white px-8 py-3 text-sm font-medium backdrop-blur">
+                Get in Touch
+              </Link>
             </div>
-            <Link to="/contact" className="self-start sm:self-auto rounded-full bg-purple-600 px-6 py-2 text-sm font-semibold text-white hover:bg-purple-700">View All Paths</Link>
           </div>
-          <div className="grid gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
-            {categories.map(c => (
-              <div key={c} className="rounded-xl bg-white p-4 text-center shadow hover:shadow-md border border-purple-100 hover:border-purple-300 transition flex flex-col justify-center">
-                <span className="font-medium text-gray-800 text-sm">{c}</span>
+          <div className="flex-1 flex items-center justify-center relative">
+            <img src={heroGirl} alt="Study" className="w-full max-w-xl drop-shadow-2xl" />
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED COURSES */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-lg mx-auto mb-12">
+            <h2 className="text-lg font-semibold tracking-wide text-indigo-700 uppercase">Featured Course</h2>
+            <p className="mt-3 text-sm text-gray-600 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore veniam.
+            </p>
+          </div>
+          <div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredCourses.map(c => (
+              <div key={c.id} className="group rounded-2xl border border-gray-200 hover:border-indigo-300 bg-white shadow-sm hover:shadow-lg transition overflow-hidden">
+                <div className="relative h-40 w-full overflow-hidden">
+                  <img src={c.image} alt={c.title} className="h-full w-full object-cover group-hover:scale-[1.04] transition-transform duration-500" />
+                  <span className="absolute top-3 left-3 bg-indigo-600 text-white text-[10px] font-medium px-2 py-1 rounded-full uppercase tracking-wide">{c.tag}</span>
+                </div>
+                <div className="p-4 flex flex-col gap-3">
+                  <div className="text-[10px] text-gray-500 flex justify-between">
+                    <span>{c.author}</span>
+                    <span>{c.duration}</span>
+                  </div>
+                  <h3 className="text-sm font-semibold leading-snug line-clamp-2 min-h-[38px]">{c.title}</h3>
+                  <div className="flex items-center justify-between mt-1">
+                    <span className="text-sm font-bold text-indigo-700">${c.price}</span>
+                    <button className="text-xs text-indigo-600 hover:text-indigo-800">♡</button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 flex justify-center">
+            <Link to="/courses" className="text-xs rounded-full bg-indigo-600 text-white px-6 py-2 font-medium hover:bg-indigo-700">Explore courses</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS GRADIENT BAR */}
+      <section className="bg-gradient-to-r from-indigo-900 to-purple-700 text-white py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 text-center">
+          <p className="max-w-xl mx-auto text-xs sm:text-sm text-white/80 mb-14">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore veniam.
+          </p>
+          <div className="grid gap-10 md:grid-cols-3">
+            {process.map(step => (
+              <div key={step.title} className="flex flex-col items-center text-center px-4">
+                <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6 ring-1 ring-white/20 backdrop-blur-sm">
+                  <img src={step.icon} alt="" className="w-9 h-9 object-contain" />
+                </div>
+                <h3 className="text-sm font-semibold mb-2 tracking-wide">{step.title}</h3>
+                <p className="text-[11px] leading-relaxed text-white/80 max-w-[230px]">{step.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 bg-white">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-center text-3xl sm:text-4xl font-bold text-gray-900">Learner Stories</h2>
-          <p className="mt-4 text-center text-gray-600 max-w-2xl mx-auto">Real outcomes from motivated learners who stayed consistent with guided structure.</p>
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map(t => (
-              <figure key={t.name} className="relative flex flex-col rounded-2xl border border-purple-100 bg-white p-6 shadow-sm hover:shadow-lg transition">
-                <blockquote className="text-gray-700 text-sm leading-relaxed">“{t.quote}”</blockquote>
-                <figcaption className="mt-4 pt-4 border-t border-purple-100 text-sm">
-                  <span className="font-semibold text-gray-900">{t.name}</span>{' '}
-                  <span className="text-gray-500">• {t.role}</span>
-                </figcaption>
-              </figure>
+      {/* CATEGORIES STRIP */}
+      <section className="py-16 bg-gradient-to-b from-white to-indigo-50/40">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-base sm:text-lg font-semibold tracking-wide text-gray-900">Top Categories</h2>
+            <p className="mt-2 text-[11px] text-gray-500">12,000+ unique online course list designs</p>
+          </div>
+          <div className="flex gap-4 overflow-x-auto pb-2 snap-x" style={{scrollbarWidth:'none'}}>
+            {categories.map(cat => (
+              <div key={cat.name} className="shrink-0 snap-center w-44 rounded-xl bg-white border border-gray-200 hover:border-indigo-300 p-4 flex flex-col items-center text-center shadow-sm hover:shadow transition">
+                <span className="text-[11px] font-medium text-gray-700 mb-1 leading-tight">{cat.name}</span>
+                <span className="text-[9px] text-gray-500">{cat.count} Courses</span>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="relative py-24">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-purple-600 via-purple-700 to-orange-500" />
-        <div className="mx-auto max-w-4xl px-4 text-center text-white">
-          <h2 className="text-3xl sm:text-4xl font-bold leading-tight">Ready to Accelerate Your Growth?</h2>
-          <p className="mt-4 text-lg text-white/90">Join thousands building real skills through intentional practice and structured mastery paths.</p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="rounded-full bg-white px-8 py-3 font-semibold text-purple-700 shadow hover:shadow-lg hover:brightness-105">Join Now</Link>
-            <Link to="/help-support" className="rounded-full bg-white/10 backdrop-blur px-8 py-3 font-medium text-white border border-white/30 hover:bg-white/20">Questions?</Link>
+      {/* VALUE PROPOSITION SPLIT */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+          <div className="relative">
+            <div className="absolute -inset-4 -z-10 bg-gradient-to-tr from-indigo-100 to-purple-50 rounded-3xl" />
+            <img src={image03} alt="Learning" className="w-full rounded-2xl" />
+          </div>
+          <div className="max-w-md">
+            <h3 className="text-lg font-semibold leading-snug mb-4">The number one factor in <span className="text-indigo-700">relevance drives out resistance.</span></h3>
+            <p className="text-xs text-gray-600 leading-relaxed mb-5">
+              Data and clear value deliver sustainable motivation: we validate your work, unlock visible progress, and build intrinsic drive through practical context.
+            </p>
+            <Link to="/courses" className="rounded-md bg-indigo-600 text-white text-xs font-medium px-5 py-2 hover:bg-indigo-700">Learn More</Link>
           </div>
         </div>
       </section>
-    </div>
+
+      {/* VIDEO / SHOWCASE */}
+      <section className="py-24 bg-indigo-50/50">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl bg-white shadow border border-indigo-100">
+            <img src={certificate} alt="Video section" className="w-full h-64 object-cover" />
+            <button className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-indigo-600/90 text-white flex items-center justify-center shadow-lg hover:scale-105 transition">
+              ▶
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-20 bg-gradient-to-b from-white to-indigo-50/60">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-base sm:text-lg font-semibold text-gray-900">Testimonials</h2>
+            <p className="text-[11px] text-gray-600 mt-1">What our student say about us</p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {testimonials.map(t => (
+              <div key={t.name} className="rounded-2xl bg-white border border-gray-200 p-5 shadow-sm hover:shadow-md transition flex flex-col gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 text-xs font-semibold">
+                    {t.name.split(' ').map(n=>n[0]).slice(0,2).join('')}
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-medium text-gray-800 leading-tight">{t.name}</p>
+                    <div className="flex text-yellow-500 text-[10px]">
+                      {'★★★★★'.slice(0,t.rating)}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-[10px] text-gray-600 leading-relaxed">{t.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
