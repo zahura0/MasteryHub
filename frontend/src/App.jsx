@@ -25,6 +25,7 @@ import Courses from "./pages/Courses";
 import Dashboard from "./pages/Dashboard";
 import InstructorBlog from "./pages/InstructorBlog";
 import InstructorBlogView from "./pages/InstructorBlogView";
+import InstructorRegistration from "./pages/InstructorRegistration";
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
           <Route path='/instructor-detail-page' element={<InstructorDetailPage />} />
           <Route path="/instructor-blogs" element={<InstructorBlog />} />
           <Route path="/instructor-blogs/:slug" element={<InstructorBlogView />} />
+          <Route path="/instructor-register" element={<InstructorRegistration />} />
 
           {/* Auth/Profile routes */}
           <Route path="/login" element={<LoginPage />} />
