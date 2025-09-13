@@ -9,6 +9,12 @@ import webinar from '../assets/webinar.png';
 import service from '../assets/service.png';
 import payment from '../assets/payment.png';
 import certificate from '../assets/certificate-of-origin.png';
+// Category images
+import digitalMarketingImg from '../assets/images/digital-marketing.png';
+import webDevelopmentImg from '../assets/images/web development.png';
+import artImg from '../assets/images/Art.png';
+import personalDevelopmentImg from '../assets/images/personal-development.png';
+import itSoftwareImg from '../assets/images/it-software.png';
 
 // Data (placeholder – replace with real API data later)
 const featuredCourses = [
@@ -27,11 +33,11 @@ const process = [
 ];
 
 const categories = [
-  { name: 'Digital Marketing', count: 25 },
-  { name: 'Web Development', count: 16 },
-  { name: 'Art & Humanities', count: 78 },
-  { name: 'Personal Development', count: 22 },
-  { name: 'IT and Software', count: 110 },
+  { name: 'Digital Marketing', count: 25, image: digitalMarketingImg },
+  { name: 'Web Development', count: 16, image: webDevelopmentImg },
+  { name: 'Art & Humanities', count: 78, image: artImg },
+  { name: 'Personal Development', count: 22, image: personalDevelopmentImg },
+  { name: 'IT and Software', count: 110, image: itSoftwareImg },
   { name: 'Graphic Design', count: 85 },
 ];
 
@@ -136,6 +142,15 @@ export default function Home() {
           <div className="flex gap-4 overflow-x-auto pb-2 snap-x" style={{scrollbarWidth:'none'}}>
             {categories.map(cat => (
               <div key={cat.name} className="shrink-0 snap-center w-44 rounded-xl bg-white border border-gray-200 hover:border-indigo-300 p-4 flex flex-col items-center text-center shadow-sm hover:shadow transition">
+                <div className="w-12 h-12 rounded-full bg-indigo-50 mb-2 overflow-hidden flex items-center justify-center ring-1 ring-indigo-100">
+                  {cat.image ? (
+                    <img src={cat.image} alt={cat.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <span className="text-[10px] font-semibold text-indigo-700">
+                      {cat.name.split(' ').map(n=>n[0]).slice(0,2).join('').toUpperCase()}
+                    </span>
+                  )}
+                </div>
                 <span className="text-[11px] font-medium text-gray-700 mb-1 leading-tight">{cat.name}</span>
                 <span className="text-[9px] text-gray-500">{cat.count} Courses</span>
               </div>
