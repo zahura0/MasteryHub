@@ -11,12 +11,15 @@ const navItems = [
 
 const dropdownMenus = {
   Courses: [
+    { label: 'All Courses', icon: Layers, to: '/courses' },
     { label: 'Course Learning', icon: BookOpen, to: '/course_learning_page' },
     { label: 'Learning Progress', icon: Layers, to: '/Learning_Progress_Page' },
     { label: 'Certificate', icon: FileText, to: '/Certificate' },
   ],
   Pages: [
     { label: 'About Us', icon: GraduationCap, to: '/About_Us' },
+    { label: 'Instructor Details', icon: Users2, to: '/instructor-detail-page' },
+    { label: 'Dashboard', icon: Users2, to: '/dashboard' },
     { label: 'Help & Support', icon: CircleHelp, to: '/help-support' },
     { label: 'Contact', icon: Headphones, to: '/contact' },
     { label: 'Terms & Conditions', icon: FileText, to: '/terms_and_conditions' },

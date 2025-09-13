@@ -21,6 +21,8 @@ import CourseCart from "./components/Course_Cart/Course_Cart";
 import LoginPage from "./pages/LoginPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ProfilePage from "./pages/ProfilePage";
+import Courses from "./pages/Courses";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   return (
@@ -46,7 +48,9 @@ const App = () => {
           <Route path="/Certificate" element={<Certificate />} />
           <Route path="/terms_and_conditions" element={<Terms_And_Conditions />} />
           <Route path="/Admin_Body" element={<Admin_Body />} />
+          <Route path="/courses" element={<Courses />} />
           <Route path="/course_cart" element={<CourseCart />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
       <Footer />
