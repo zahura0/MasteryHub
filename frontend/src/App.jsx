@@ -1,15 +1,6 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import ContactUs from './pages/ContactUs';
-import HelpSupportPage from './pages/HelpSupportPage';
-import InstructorDetailPage from './pages/InstructorDetailPage';
-
-
-
-
-function App() {
-
 
 // Layout
 import Navbar from "./components/Navbar";
@@ -19,6 +10,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
 import HelpSupportPage from "./pages/HelpSupportPage";
+import InstructorDetailPage from './pages/InstructorDetailPage';
 import About_Us from "./pages/About_Us";
 import Course_Learning_Page from "./pages/Course_Learning_Page";
 import Learning_Progress_Page from "./pages/Learning_Progress_Page";
@@ -39,10 +31,8 @@ const App = () => {
           {/* Primary routes */}
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<ContactUs />} />
-          <Route path='/help-support' element={<HelpSupportPage />} />
-          <Route path='/instructor-detail-page' element={<InstructorDetailPage />} />
-
           <Route path="/help-support" element={<HelpSupportPage />} />
+          <Route path='/instructor-detail-page' element={<InstructorDetailPage />} />
 
           {/* Auth/Profile routes */}
           <Route path="/login" element={<LoginPage />} />
