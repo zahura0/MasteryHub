@@ -4,8 +4,6 @@ import { blogs } from "../data/blogs";
 import BlogCard from "../components/InstructorBlog/BlogCard";
 
 export default function InstructorBlog() {
-  const featured = blogs[0];
-
   return (
     <div className="bg-white">
       {/* HERO */}
@@ -31,41 +29,8 @@ export default function InstructorBlog() {
             <Link to="#" className="text-sm text-indigo-600 hover:text-indigo-800">See All Article →</Link>
           </div>
 
-          {/* Featured */}
-          <div className="grid md:grid-cols-4 gap-6 mb-10">
-            {/* Featured left big card */}
-            <div className="md:col-span-2 rounded-2xl overflow-hidden border border-gray-200 bg-white">
-              <img src={featured.image} alt={featured.title} className="w-full h-56 object-cover" />
-              <div className="p-5">
-                <p className="text-xs text-gray-500">Featured Article</p>
-                <h3 className="mt-2 text-lg font-semibold leading-snug">
-                  <Link to={`/instructor-blogs/${featured.slug}`} className="hover:underline">
-                    {featured.title}
-                  </Link>
-                </h3>
-                <div className="mt-3 flex items-center gap-3 text-xs text-gray-500">
-                  <div className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-[9px] font-semibold">
-                    {featured.author.split(" ").map((n) => n[0]).slice(0, 2).join("")}
-                  </div>
-                  <span>{featured.author}</span>
-                  <span>•</span>
-                  <span>{featured.date}</span>
-                  <span>•</span>
-                  <span>{featured.readTime}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right side small grid */}
-            <div className="md:col-span-2 grid sm:grid-cols-2 gap-6">
-              {blogs.slice(1, 5).map((b) => (
-                <BlogCard key={b.id} blog={b} />
-              ))}
-            </div>
-          </div>
-
-          {/* Rest grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Uniform grid: 4 columns on large screens, equal-height cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {blogs.map((b) => (
               <BlogCard key={b.id} blog={b} />
             ))}
