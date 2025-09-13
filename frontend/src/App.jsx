@@ -1,10 +1,3 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import ForgotPasswordPage from './pages/ForgotPasswordPage';
-import ProfilePage from './pages/ProfilePage';
-
-const App = () => {
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
@@ -24,19 +17,12 @@ import Certificate from "./pages/Certificate";
 import Terms_And_Conditions from "./pages/Terms_And_Conditions";
 import Admin_Body from "./components/Admin/Admin_Body";
 import CourseCart from "./components/Course_Cart/Course_Cart";
+import LoginPage from "./pages/LoginPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ProfilePage from "./pages/ProfilePage";
 
 const App = () => {
   return (
-    <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
-      <Routes>
-        <Route path="/" element={<h1>Home Page</h1>} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-      </Routes>
-    </div>
-  );
-};
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
@@ -45,6 +31,11 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/help-support" element={<HelpSupportPage />} />
+
+          {/* Auth/Profile routes */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
 
           {/* Additional routes */}
           <Route path="/About_Us" element={<About_Us />} />
@@ -61,5 +52,4 @@ const App = () => {
   );
 };
 
-export default App;
 export default App;
