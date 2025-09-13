@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 // Layout
 import Navbar from "./components/Navbar";
@@ -28,9 +28,12 @@ import InstructorBlogView from "./pages/InstructorBlogView";
 import InstructorRegistration from "./pages/InstructorRegistration";
 
 const App = () => {
+  const location = useLocation();
+  const hideLayoutPaths = ["/Admin_Body", "/dashboard"]; // routes that should not show Navbar/Footer
+  const hideLayout = hideLayoutPaths.some((p) => location.pathname.startsWith(p));
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      {!hideLayout && <Navbar />}
       <main className="flex-grow">
         <Routes>
           {/* Primary routes */}
@@ -59,7 +62,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
-      <Footer />
+      {!hideLayout && <Footer />}
     </div>
   );
 };
