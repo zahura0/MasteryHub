@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import heroGirl from '../assets/girl-stu-hero.png';
 import image01 from '../assets/image_01.png';
@@ -48,6 +48,32 @@ const testimonials = [
 ];
 
 export default function Home() {
+  const [openCourse, setOpenCourse] = useState(null);
+
+  const handleOpenCourse = (course) => {
+    if (course?.id === 1) setOpenCourse(course);
+  };
+
+  const handleClose = () => setOpenCourse(null);
+
+  // Close on ESC and lock scroll when modal open
+  useEffect(() => {
+    if (!openCourse) return;
+    const onKey = (e) => {
+      if (e.key === 'Escape') handleClose();
+    };
+    window.addEventListener('keydown', onKey);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [openCourse]);
+
+  // Trailer video (placeholder) specifically for course id=1
+  const trailerSrc = 'https://www.youtube-nocookie.com/embed/2LhoCfjm8R4?rel=0&modestbranding=1';
+
   return (
     <main className="bg-white flex flex-col">
       {/* HERO */}
@@ -87,7 +113,14 @@ export default function Home() {
           </div>
           <div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {featuredCourses.map(c => (
-              <div key={c.id} className="group rounded-2xl border border-gray-200 hover:border-indigo-300 bg-white shadow-sm hover:shadow-lg transition overflow-hidden">
+              <div
+                key={c.id}
+                className={`group rounded-2xl border border-gray-200 hover:border-indigo-300 bg-white shadow-sm hover:shadow-lg transition overflow-hidden ${c.id === 1 ? 'cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-400' : ''}`}
+                onClick={c.id === 1 ? () => handleOpenCourse(c) : undefined}
+                role={c.id === 1 ? 'button' : undefined}
+                tabIndex={c.id === 1 ? 0 : undefined}
+                onKeyDown={c.id === 1 ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleOpenCourse(c);} } : undefined}
+              >
                 <div className="relative h-40 w-full overflow-hidden">
                   <img src={c.image} alt={c.title} className="h-full w-full object-cover group-hover:scale-[1.04] transition-transform duration-500" />
                   <span className="absolute top-3 left-3 bg-indigo-600 text-white text-[10px] font-medium px-2 py-1 rounded-full uppercase tracking-wide">{c.tag}</span>
@@ -100,7 +133,23 @@ export default function Home() {
                   <h3 className="text-sm font-semibold leading-snug line-clamp-2 min-h-[38px]">{c.title}</h3>
                   <div className="flex items-center justify-between mt-1">
                     <span className="text-sm font-bold text-indigo-700">${c.price}</span>
-                    <button className="text-xs text-indigo-600 hover:text-indigo-800">♡</button>
+                    <div className="flex items-center gap-2">
+                      <Link
+                        to="/course_cart"
+                        className="text-[10px] px-2.5 py-1 rounded-md bg-indigo-600 text-white hover:bg-indigo-700"
+                        aria-label="Add to cart"
+                        onClick={c.id === 1 ? (e) => { e.stopPropagation(); } : undefined}
+                      >
+                        Add to Cart
+                      </Link>
+                      <button
+                        className="text-xs text-indigo-600 hover:text-indigo-800"
+                        aria-label="Add to wishlist"
+                        onClick={c.id === 1 ? (e) => { e.stopPropagation(); } : undefined}
+                      >
+                        ♡
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -215,6 +264,90 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* COURSE PREVIEW MODAL */}
+      {openCourse && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          aria-modal="true"
+          role="dialog"
+          aria-labelledby="course-modal-title"
+          onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/70 via-purple-900/60 to-indigo-900/70 backdrop-blur-sm" />
+
+          {/* Panel */}
+          <div className="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+            <div className="absolute -inset-px rounded-3xl pointer-events-none" style={{boxShadow:'0 0 0 1px rgba(255,255,255,0.08) inset'}} />
+            <div className="bg-white">
+              {/* Header */}
+              <div className="flex items-start justify-between px-6 pt-6">
+                <div>
+                  <p className="text-[11px] uppercase tracking-widest text-indigo-600 font-semibold">Featured Preview</p>
+                  <h3 id="course-modal-title" className="mt-1 text-lg sm:text-xl font-bold text-gray-900 leading-tight">
+                    {openCourse.title}
+                  </h3>
+                  <div className="mt-1 flex items-center gap-3 text-[11px] text-gray-500">
+                    <span>{openCourse.author}</span>
+                    <span className="w-1 h-1 rounded-full bg-gray-300" />
+                    <span>{openCourse.duration}</span>
+                    <span className="w-1 h-1 rounded-full bg-gray-300" />
+                    <span>{openCourse.lessons} lessons</span>
+                  </div>
+                </div>
+                <button
+                  onClick={handleClose}
+                  aria-label="Close"
+                  className="-mr-2 -mt-2 inline-flex items-center justify-center rounded-full p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 11-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clipRule="evenodd"/></svg>
+                </button>
+              </div>
+
+              {/* Body */}
+              <div className="px-6 pb-6">
+                <div className="mt-5 grid lg:grid-cols-2 gap-6">
+                  {/* Video */}
+                  <div className="relative rounded-2xl overflow-hidden ring-1 ring-indigo-100 bg-indigo-50 aspect-video">
+                    <iframe
+                      className="absolute inset-0 w-full h-full"
+                      src={trailerSrc}
+                      title="Course trailer"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  </div>
+                  {/* Details */}
+                  <div className="flex flex-col justify-between">
+                    <div>
+                      <p className="text-[12px] text-gray-600 leading-relaxed">
+                        Learn to craft eye-catching kinetic typography animations using modern motion graphics techniques. Perfect for reels, ads, and brand teasers.
+                      </p>
+                      <ul className="mt-4 space-y-2 text-[12px] text-gray-700">
+                        <li className="flex items-start gap-2"><span className="mt-1 inline-block w-1.5 h-1.5 rounded-full bg-indigo-500" /> Keyframing and easing for silky motion</li>
+                        <li className="flex items-start gap-2"><span className="mt-1 inline-block w-1.5 h-1.5 rounded-full bg-indigo-500" /> Type layout, rhythm, and timing principles</li>
+                        <li className="flex items-start gap-2"><span className="mt-1 inline-block w-1.5 h-1.5 rounded-full bg-indigo-500" /> Export best practices for crisp social posts</li>
+                      </ul>
+                    </div>
+                    <div className="mt-6 flex items-center justify-between">
+                      <div>
+                        <span className="text-xs text-gray-500">Course price</span>
+                        <div className="text-xl font-bold text-indigo-700">${openCourse.price}</div>
+                      </div>
+                      <div className="flex gap-3">
+                        <button onClick={handleClose} className="px-4 py-2 text-xs font-semibold rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">Maybe later</button>
+                        <button className="px-4 py-2 text-xs font-semibold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 shadow">Start Learning</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
