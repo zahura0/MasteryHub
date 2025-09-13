@@ -23,6 +23,8 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ProfilePage from "./pages/ProfilePage";
 import Courses from "./pages/Courses";
 import Dashboard from "./pages/Dashboard";
+import InstructorBlog from "./pages/InstructorBlog";
+import InstructorBlogView from "./pages/InstructorBlogView";
 
 const App = () => {
   return (
@@ -35,6 +37,8 @@ const App = () => {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/help-support" element={<HelpSupportPage />} />
           <Route path='/instructor-detail-page' element={<InstructorDetailPage />} />
+          <Route path="/instructor-blogs" element={<InstructorBlog />} />
+          <Route path="/instructor-blogs/:slug" element={<InstructorBlogView />} />
 
           {/* Auth/Profile routes */}
           <Route path="/login" element={<LoginPage />} />

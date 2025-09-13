@@ -84,7 +84,7 @@ export default function Home() {
             <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">
               Unlock Your <br /> Potential with <span className="text-orange-300">MasteryHub</span>
             </h1>
-            <p className="mt-5 text-white/90 text-sm sm:text-base leading-relaxed max-w-md">
+            <p className="mt-5 text-white/90 text-base sm:text-lg leading-relaxed max-w-md">
               Learn in-demand skills, follow structured paths, and build real portfolio projects guided by experts.
             </p>
             <div className="mt-7 flex flex-col sm:flex-row gap-4">
@@ -123,27 +123,27 @@ export default function Home() {
               >
                 <div className="relative h-40 w-full overflow-hidden">
                   <img src={c.image} alt={c.title} className="h-full w-full object-cover group-hover:scale-[1.04] transition-transform duration-500" />
-                  <span className="absolute top-3 left-3 bg-indigo-600 text-white text-[10px] font-medium px-2 py-1 rounded-full uppercase tracking-wide">{c.tag}</span>
+                  <span className="absolute top-3 left-3 bg-indigo-600 text-white text-xs font-medium px-2 py-1 rounded-full uppercase tracking-wide">{c.tag}</span>
                 </div>
                 <div className="p-4 flex flex-col gap-3">
-                  <div className="text-[10px] text-gray-500 flex justify-between">
+                  <div className="text-xs text-gray-500 flex justify-between">
                     <span>{c.author}</span>
                     <span>{c.duration}</span>
                   </div>
-                  <h3 className="text-sm font-semibold leading-snug line-clamp-2 min-h-[38px]">{c.title}</h3>
+                  <h3 className="text-base font-semibold leading-snug line-clamp-2 min-h-[44px]">{c.title}</h3>
                   <div className="flex items-center justify-between mt-1">
-                    <span className="text-sm font-bold text-indigo-700">${c.price}</span>
+                    <span className="text-base font-bold text-indigo-700">${c.price}</span>
                     <div className="flex items-center gap-2">
                       <Link
                         to="/course_cart"
-                        className="text-[10px] px-2.5 py-1 rounded-md bg-indigo-600 text-white hover:bg-indigo-700"
+                        className="text-xs px-2.5 py-1 rounded-md bg-indigo-600 text-white hover:bg-indigo-700"
                         aria-label="Add to cart"
                         onClick={c.id === 1 ? (e) => { e.stopPropagation(); } : undefined}
                       >
                         Add to Cart
                       </Link>
                       <button
-                        className="text-xs text-indigo-600 hover:text-indigo-800"
+                        className="text-sm text-indigo-600 hover:text-indigo-800"
                         aria-label="Add to wishlist"
                         onClick={c.id === 1 ? (e) => { e.stopPropagation(); } : undefined}
                       >
@@ -156,7 +156,7 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-10 flex justify-center">
-            <Link to="/courses" className="text-xs rounded-full bg-indigo-600 text-white px-6 py-2 font-medium hover:bg-indigo-700">Explore courses</Link>
+            <Link to="/courses" className="text-sm rounded-full bg-indigo-600 text-white px-6 py-2 font-medium hover:bg-indigo-700">Explore courses</Link>
           </div>
         </div>
       </section>
@@ -164,7 +164,7 @@ export default function Home() {
       {/* PROCESS GRADIENT BAR */}
       <section className="bg-gradient-to-r from-indigo-900 to-purple-700 text-white py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 text-center">
-          <p className="max-w-xl mx-auto text-xs sm:text-sm text-white/80 mb-14">
+          <p className="max-w-xl mx-auto text-sm sm:text-base text-white/80 mb-14">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore veniam.
           </p>
           <div className="grid gap-10 md:grid-cols-3">
@@ -173,8 +173,8 @@ export default function Home() {
                 <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6 ring-1 ring-white/20 backdrop-blur-sm">
                   <img src={step.icon} alt="" className="w-9 h-9 object-contain" />
                 </div>
-                <h3 className="text-sm font-semibold mb-2 tracking-wide">{step.title}</h3>
-                <p className="text-[11px] leading-relaxed text-white/80 max-w-[230px]">{step.desc}</p>
+                <h3 className="text-base font-semibold mb-2 tracking-wide">{step.title}</h3>
+                <p className="text-sm leading-relaxed text-white/80 max-w-[230px]">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -186,7 +186,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-base sm:text-lg font-semibold tracking-wide text-gray-900">Top Categories</h2>
-            <p className="mt-2 text-[11px] text-gray-500">12,000+ unique online course list designs</p>
+            <p className="mt-2 text-sm text-gray-500">12,000+ unique online course list designs</p>
           </div>
           <div className="flex gap-4 overflow-x-auto pb-2 snap-x" style={{scrollbarWidth:'none'}}>
             {categories.map(cat => (
@@ -195,13 +195,13 @@ export default function Home() {
                   {cat.image ? (
                     <img src={cat.image} alt={cat.name} className="w-full h-full object-cover" />
                   ) : (
-                    <span className="text-[10px] font-semibold text-indigo-700">
+                    <span className="text-sm font-semibold text-indigo-700">
                       {cat.name.split(' ').map(n=>n[0]).slice(0,2).join('').toUpperCase()}
                     </span>
                   )}
                 </div>
-                <span className="text-[11px] font-medium text-gray-700 mb-1 leading-tight">{cat.name}</span>
-                <span className="text-[9px] text-gray-500">{cat.count} Courses</span>
+                <span className="text-sm font-medium text-gray-700 mb-1 leading-tight">{cat.name}</span>
+                <span className="text-xs text-gray-500">{cat.count} Courses</span>
               </div>
             ))}
           </div>
@@ -216,11 +216,11 @@ export default function Home() {
             <img src={image03} alt="Learning" className="w-full rounded-2xl" />
           </div>
           <div className="max-w-md">
-            <h3 className="text-lg font-semibold leading-snug mb-4">The number one factor in <span className="text-indigo-700">relevance drives out resistance.</span></h3>
-            <p className="text-xs text-gray-600 leading-relaxed mb-5">
+            <h3 className="text-xl font-semibold leading-snug mb-4">The number one factor in <span className="text-indigo-700">relevance drives out resistance.</span></h3>
+            <p className="text-sm text-gray-600 leading-relaxed mb-5">
               Data and clear value deliver sustainable motivation: we validate your work, unlock visible progress, and build intrinsic drive through practical context.
             </p>
-            <Link to="/courses" className="rounded-md bg-indigo-600 text-white text-xs font-medium px-5 py-2 hover:bg-indigo-700">Learn More</Link>
+            <Link to="/courses" className="rounded-md bg-indigo-600 text-white text-sm font-medium px-5 py-2 hover:bg-indigo-700">Learn More</Link>
           </div>
         </div>
       </section>
@@ -241,8 +241,8 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-b from-white to-indigo-50/60">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-base sm:text-lg font-semibold text-gray-900">Testimonials</h2>
-            <p className="text-[11px] text-gray-600 mt-1">What our student say about us</p>
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Testimonials</h2>
+            <p className="text-sm text-gray-600 mt-1">What our student say about us</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {testimonials.map(t => (
@@ -252,13 +252,13 @@ export default function Home() {
                     {t.name.split(' ').map(n=>n[0]).slice(0,2).join('')}
                   </div>
                   <div>
-                    <p className="text-[11px] font-medium text-gray-800 leading-tight">{t.name}</p>
-                    <div className="flex text-yellow-500 text-[10px]">
+                    <p className="text-sm font-medium text-gray-800 leading-tight">{t.name}</p>
+                    <div className="flex text-yellow-500 text-xs">
                       {'★★★★★'.slice(0,t.rating)}
                     </div>
                   </div>
                 </div>
-                <p className="text-[10px] text-gray-600 leading-relaxed">{t.text}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{t.text}</p>
               </div>
             ))}
           </div>
@@ -284,11 +284,11 @@ export default function Home() {
               {/* Header */}
               <div className="flex items-start justify-between px-6 pt-6">
                 <div>
-                  <p className="text-[11px] uppercase tracking-widest text-indigo-600 font-semibold">Featured Preview</p>
-                  <h3 id="course-modal-title" className="mt-1 text-lg sm:text-xl font-bold text-gray-900 leading-tight">
+                  <p className="text-sm uppercase tracking-widest text-indigo-600 font-semibold">Featured Preview</p>
+                  <h3 id="course-modal-title" className="mt-1 text-xl sm:text-2xl font-bold text-gray-900 leading-tight">
                     {openCourse.title}
                   </h3>
-                  <div className="mt-1 flex items-center gap-3 text-[11px] text-gray-500">
+                  <div className="mt-1 flex items-center gap-3 text-sm text-gray-500">
                     <span>{openCourse.author}</span>
                     <span className="w-1 h-1 rounded-full bg-gray-300" />
                     <span>{openCourse.duration}</span>
@@ -322,10 +322,10 @@ export default function Home() {
                   {/* Details */}
                   <div className="flex flex-col justify-between">
                     <div>
-                      <p className="text-[12px] text-gray-600 leading-relaxed">
+                      <p className="text-sm text-gray-600 leading-relaxed">
                         Learn to craft eye-catching kinetic typography animations using modern motion graphics techniques. Perfect for reels, ads, and brand teasers.
                       </p>
-                      <ul className="mt-4 space-y-2 text-[12px] text-gray-700">
+                      <ul className="mt-4 space-y-2 text-sm text-gray-700">
                         <li className="flex items-start gap-2"><span className="mt-1 inline-block w-1.5 h-1.5 rounded-full bg-indigo-500" /> Keyframing and easing for silky motion</li>
                         <li className="flex items-start gap-2"><span className="mt-1 inline-block w-1.5 h-1.5 rounded-full bg-indigo-500" /> Type layout, rhythm, and timing principles</li>
                         <li className="flex items-start gap-2"><span className="mt-1 inline-block w-1.5 h-1.5 rounded-full bg-indigo-500" /> Export best practices for crisp social posts</li>
@@ -333,12 +333,12 @@ export default function Home() {
                     </div>
                     <div className="mt-6 flex items-center justify-between">
                       <div>
-                        <span className="text-xs text-gray-500">Course price</span>
+                        <span className="text-sm text-gray-500">Course price</span>
                         <div className="text-xl font-bold text-indigo-700">${openCourse.price}</div>
                       </div>
                       <div className="flex gap-3">
-                        <button onClick={handleClose} className="px-4 py-2 text-xs font-semibold rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">Maybe later</button>
-                        <button className="px-4 py-2 text-xs font-semibold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 shadow">Start Learning</button>
+                        <button onClick={handleClose} className="px-4 py-2 text-sm font-semibold rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">Maybe later</button>
+                        <button className="px-4 py-2 text-sm font-semibold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 shadow">Start Learning</button>
                       </div>
                     </div>
                   </div>

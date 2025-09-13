@@ -19,6 +19,7 @@ const dropdownMenus = {
   Pages: [
     { label: 'About Us', icon: GraduationCap, to: '/About_Us' },
     { label: 'Instructor Details', icon: Users2, to: '/instructor-detail-page' },
+    { label: 'Instructors Blogs', icon: FileText, to: '/instructor-blogs' },
     { label: 'Dashboard', icon: Users2, to: '/dashboard' },
     { label: 'Help & Support', icon: CircleHelp, to: '/help-support' },
     { label: 'Contact', icon: Headphones, to: '/contact' },

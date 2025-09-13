@@ -33,10 +33,10 @@ export default function Courses() {
       <section className="relative h-64 md:h-120 bg-[url('/src/assets/course-bg.png')] bg-cover bg-center">
         <div className="absolute inset-0 bg-indigo-900/60" />
         <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-          <h1 className="text-white text-3xl sm:text-4xl font-extrabold max-w-xl leading-tight">
+          <h1 className="text-white text-4xl sm:text-5xl font-extrabold max-w-xl leading-tight">
             Unlock Your Potential with MasteryHub
           </h1>
-          <p className="text-white/90 text-xs sm:text-sm mt-3 max-w-md">
+          <p className="text-white/90 text-sm sm:text-base mt-3 max-w-md">
             Join MasteryHub today to access a wide range of courses designed to enhance your skills.
           </p>
         </div>
@@ -49,20 +49,20 @@ export default function Courses() {
             {/* Search */}
             <div className="flex-1 flex items-center gap-2 border rounded-xl px-3 py-2 bg-white">
               <span className="text-gray-400">🔎</span>
-              <input value={q} onChange={e=>setQ(e.target.value)} placeholder="Search" className="w-full outline-none text-sm"/>
+              <input value={q} onChange={e=>setQ(e.target.value)} placeholder="Search" className="w-full outline-none text-base"/>
             </div>
             {/* Filters */}
             <div className="grid grid-cols-2 md:flex md:flex-row gap-3">
-              <select value={category} onChange={e=>setCategory(e.target.value)} className="px-3 py-2 rounded-xl border bg-white text-sm">
+              <select value={category} onChange={e=>setCategory(e.target.value)} className="px-3 py-2 rounded-xl border bg-white text-base">
                 {categories.map(c => <option key={c}>{c}</option>)}
               </select>
-              <select value={duration} onChange={e=>setDuration(e.target.value)} className="px-3 py-2 rounded-xl border bg-white text-sm">
+              <select value={duration} onChange={e=>setDuration(e.target.value)} className="px-3 py-2 rounded-xl border bg-white text-base">
                 <option value="any">Duration: any</option>
                 <option value="short">Duration: ≤ 4h</option>
                 <option value="medium">Duration: ≤ 6h</option>
                 <option value="long">Duration: 6h+</option>
               </select>
-              <button className="px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-medium">Filter</button>
+              <button className="px-4 py-2 rounded-xl bg-indigo-600 text-white text-base font-medium">Filter</button>
             </div>
           </div>
         </div>
@@ -73,26 +73,26 @@ export default function Courses() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-gray-900 font-bold text-xl">Browse Your Course</h2>
-            <div className="text-xs text-gray-500">{filtered.length} results</div>
+            <div className="text-sm text-gray-500">{filtered.length} results</div>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map(course => (
               <div key={course.id} className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition overflow-hidden">
                 <div className="h-36 bg-gray-100 relative overflow-hidden">
                   <img src={course.thumb} alt="thumb" className="w-full h-full object-cover"/>
-                  <span className="absolute top-2 left-2 text-[10px] bg-indigo-600 text-white rounded-full px-2 py-1">{course.tag}</span>
+                  <span className="absolute top-2 left-2 text-xs bg-indigo-600 text-white rounded-full px-2 py-1">{course.tag}</span>
                 </div>
                 <div className="p-4 space-y-2">
-                  <div className="text-[10px] text-gray-500 flex justify-between">
+                  <div className="text-xs text-gray-500 flex justify-between">
                     <span>{course.students.toLocaleString()} Students</span>
                     <span>{course.duration}</span>
                   </div>
-                  <h3 className="text-sm font-semibold leading-snug line-clamp-2 min-h-[38px]">{course.title}</h3>
+                  <h3 className="text-base font-semibold leading-snug line-clamp-2 min-h-[44px]">{course.title}</h3>
                   <div className="flex items-center justify-between pt-2">
-                    <span className="text-indigo-700 font-bold text-sm">${course.price}</span>
+                    <span className="text-indigo-700 font-bold text-base">${course.price}</span>
                     <div className="flex items-center gap-2">
-                      <Link to="/course_cart" className="text-[10px] px-2.5 py-1 rounded-md bg-indigo-600 text-white hover:bg-indigo-700">Add to Cart</Link>
-                      <button className="text-xs text-indigo-600 hover:text-indigo-800" aria-label="Add to wishlist">♡</button>
+                      <Link to="/course_cart" className="text-xs px-2.5 py-1 rounded-md bg-indigo-600 text-white hover:bg-indigo-700">Add to Cart</Link>
+                      <button className="text-sm text-indigo-600 hover:text-indigo-800" aria-label="Add to wishlist">♡</button>
                     </div>
                   </div>
                 </div>
@@ -101,7 +101,7 @@ export default function Courses() {
           </div>
 
           <div className="mt-10 flex justify-center">
-            <button className="text-xs rounded-full bg-indigo-600 text-white px-6 py-2 font-medium hover:bg-indigo-700">See More</button>
+            <button className="text-sm rounded-full bg-indigo-600 text-white px-6 py-2 font-medium hover:bg-indigo-700">See More</button>
           </div>
         </div>
       </section>
