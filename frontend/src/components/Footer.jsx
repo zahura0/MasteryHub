@@ -21,10 +21,10 @@ export default function Footer() {
           <h4 className="text-lg mb-4 font-medium">Quick Links</h4>
           <ul className="space-y-2 text-sm font-light">
             <li>
-              <Link to="/about" className="hover:text-orange-300">About</Link>
+              <Link to="/About_Us" className="hover:text-orange-300">About</Link>
             </li>
             <li>
-              <Link to="/courses" className="hover:text-orange-300">Course</Link>
+              <Link to="/course_learning_page" className="hover:text-orange-300">Course</Link>
             </li>
             <li>
               <Link to="/contact" className="hover:text-orange-300">Contact</Link>

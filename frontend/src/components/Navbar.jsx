@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Search, ShoppingCart, User, BookOpen, Layers, PlayCircle, Star, Users2, GraduationCap, CircleHelp, FileText, Compass, Package, Notebook, Headphones, BookUp2 } from 'lucide-react';
+import { Search, ShoppingCart, User, BookOpen, Layers, Users2, GraduationCap, CircleHelp, FileText, Compass, Headphones } from 'lucide-react';
 import Logo from '../assets/logo_white.png';
 
 const navItems = [
@@ -11,22 +11,20 @@ const navItems = [
 
 const dropdownMenus = {
   Courses: [
-    { label: 'All Courses', icon: BookOpen, to: '/courses' },
-    { label: 'Learning Paths', icon: Layers, to: '/paths' },
-    { label: 'Live Sessions', icon: PlayCircle, to: '/live' },
-    { label: 'Top Rated', icon: Star, to: '/courses/top' },
+    { label: 'Course Learning', icon: BookOpen, to: '/course_learning_page' },
+    { label: 'Learning Progress', icon: Layers, to: '/Learning_Progress_Page' },
+    { label: 'Certificate', icon: FileText, to: '/Certificate' },
   ],
   Pages: [
-    { label: 'Instructors', icon: Users2, to: '/instructors' },
-    { label: 'About Us', icon: GraduationCap, to: '/about' },
-    { label: 'Help Center', icon: CircleHelp, to: '/help' },
-    { label: 'Blog', icon: FileText, to: '/blog' },
+    { label: 'About Us', icon: GraduationCap, to: '/About_Us' },
+    { label: 'Help & Support', icon: CircleHelp, to: '/help-support' },
+    { label: 'Contact', icon: Headphones, to: '/contact' },
+    { label: 'Terms & Conditions', icon: FileText, to: '/terms_and_conditions' },
+    { label: 'Admin', icon: Users2, to: '/Admin_Body' },
+    { label: 'Profile', icon: User, to: '/profile' },
   ],
   Shop: [
-    { label: 'Books', icon: BookUp2, to: '/shop/books' },
-    { label: 'Lecture Notes', icon: Notebook, to: '/shop/notes' },
-    { label: 'Course Bundles', icon: Package, to: '/shop/bundles' },
-    { label: 'Accessories', icon: Headphones, to: '/shop/accessories' },
+    { label: 'Course Cart', icon: ShoppingCart, to: '/course_cart' },
   ],
 };
 
@@ -120,18 +118,18 @@ export default function Navbar() {
           </div>
 
           {/* Cart */}
-          <button className="relative">
+          <NavLink to="/course_cart" className="relative">
             <ShoppingCart size={20} className="text-gray-700" />
             <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full px-1.5">
               0
             </span>
-          </button>
+          </NavLink>
 
           {/* Login */}
-          <button className="flex items-center gap-1 text-gray-700 text-sm font-light hover:underline">
+          <NavLink to="/login" className="flex items-center gap-1 text-gray-700 text-sm font-light hover:underline">
             <User size={18} />
             Login
-          </button>
+          </NavLink>
 
           {/* Signup */}
           <button className="rounded-md bg-gradient-to-r from-blue-600 to-purple-500 px-5 py-2 text-sm font-medium text-white shadow hover:shadow-md">
