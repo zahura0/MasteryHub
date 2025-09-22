@@ -5,12 +5,12 @@ const CheckoutModal = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black/10 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300 ease-out"
+      className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300 ease-out"
       onClick={onClose} 
     >
       <div
         onClick={(e) => e.stopPropagation()} 
-        className="bg-white/90 backdrop-blur-md rounded-xl shadow-2xl shadow-black/20 p-8 w-full max-w-md transform transition-all duration-300 ease-out"
+        className="relative bg-white rounded-xl shadow-2xl shadow-black/20 p-6 sm:p-8 w-full max-w-md transform transition-all duration-300 ease-out ring-1 ring-gray-200"
       >
         <button
           onClick={onClose}
@@ -19,7 +19,7 @@ const CheckoutModal = ({ isOpen, onClose }) => {
           &times;
         </button>
 
-        <h2 className="text-xl font-bold text-gray-800 mb-6 text-center">
+        <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">
           Pay via Credit / Debit Card
         </h2>
 
@@ -29,7 +29,7 @@ const CheckoutModal = ({ isOpen, onClose }) => {
             <input
               type="text"
               placeholder="Card Holder's Name"
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600"
             />
           </div>
 
@@ -38,7 +38,7 @@ const CheckoutModal = ({ isOpen, onClose }) => {
             <input
               type="text"
               placeholder="Card Number"
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600"
             />
           </div>
 
@@ -48,7 +48,7 @@ const CheckoutModal = ({ isOpen, onClose }) => {
               <input
                 type="text"
                 placeholder="MM/YY"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600"
               />
             </div>
             <div className="flex-1">
@@ -56,7 +56,7 @@ const CheckoutModal = ({ isOpen, onClose }) => {
               <input
                 type="text"
                 placeholder="CVV"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600"
               />
             </div>
           </div>
@@ -68,7 +68,7 @@ const CheckoutModal = ({ isOpen, onClose }) => {
             </label>
           </div>
 
-          <button className="w-full bg-[#050472] text-white font-semibold px-4 py-3 rounded-lg mt-4 hover:bg-[#03035a] transition">
+          <button className="w-full bg-indigo-700 text-white font-semibold px-4 py-3 rounded-lg mt-4 hover:bg-indigo-800 transition">
             PLACE ORDER
           </button>
         </div>
